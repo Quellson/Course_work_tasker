@@ -1,0 +1,30 @@
+{% extends 'main/crucial.html '%}
+
+{% block titles %}
+Tasks
+{%endblock%}
+{% block content %}
+    <h1>These are your tasks</h1>
+    {% if tasks  %}
+        {% for element in tasks %}
+            {% if element.taskdeadline <= 3 %}
+                <div class="alert alert-warning">
+                    <h3>{{element.task_name}}</h3>
+                    <p>{{element.task_info}}</p>
+                    <p>{{element.taskdeadline}} days limit</p>
+                    
+                </div>
+            {% endif %}
+            {% if element.taskdeadline  >= 4 %}
+                <div class="alert alert-info">
+                    <h3>{{element.task_name}}</h3>
+                    <p>{{element.task_info}}</p>
+                    <p>{{element.taskdeadline}} days limit</p>
+                    
+                </div>
+            {% endif %}
+        {%endfor%}
+    {% else %}
+    <p>Database is empty</p>
+    {% endif %}
+{% endblock %}

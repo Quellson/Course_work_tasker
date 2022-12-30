@@ -1,0 +1,17 @@
+{% extends 'main/crucial.html '%}
+
+{% block titles %}
+Task Creator
+{%endblock%}
+{% block content %}
+    <h1>Create your task</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.task_name }}<br>
+        {{ form.task_info }}<br>
+        {{ form.taskdeadline }}<br>
+        
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
